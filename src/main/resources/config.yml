@@ -1,0 +1,13 @@
+service: calculator
+title: CodeShield Calculator
+# Decimal digits of precision for results
+precision: 16
+# Largest exponent accepted by "power"
+maxExponent: 100
+operations:
+  - add
+  - subtract
+  - multiply
+  - divide
+  - power
+  - modulo
