@@ -1,13 +1,24 @@
 # calculator
 
-Intentionally vulnerable Java 17 AWS Lambda (ZIP package): a basic web calculator, used as a test target for
-CodeShield AI.
+A basic web calculator on AWS Lambda (Java 17): add, subtract, multiply, divide, power and modulo from a keypad in your browser or a JSON API, with exact decimal maths. It is a deliberately vulnerable demo target for CodeShield AI scanning and fixing.
+
+**Service URL:** <https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/>
 
 > ⚠️ The dependency versions in `pom.xml` are deliberately outdated and have known CVEs. Do not reuse them.
 
-## Live
+## What it does
 
-<https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/>
+- `GET /` is a keypad calculator. Every `=` is computed by the Lambda, and a table under the keypad shows the
+  library versions running in this deployment with a pass/fail self-test for each.
+- `GET /api/calc?a=12&b=3&op=divide` returns the result as JSON.
+- `GET /api/health` returns `UP` plus every library version and self-test result (HTTP 503 if any fails).
+
+Try it: [12 ÷ 3](https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/api/calc?a=12&b=3&op=divide) ·
+[0.1 + 0.2](https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/api/calc?a=0.1&b=0.2&op=add) ·
+[2 ^ 10](https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/api/calc?a=2&b=10&op=power) ·
+[health](https://f74gaokucajkw5w37gxgxgwihm0qdyof.lambda-url.eu-west-1.on.aws/api/health)
+
+## API
 
 | Route | Returns |
 |---|---|
